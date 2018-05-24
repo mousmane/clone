@@ -10,10 +10,10 @@
 require ('fonction.php');
 require ('include/header.php');
 
-
+//  || (is_numeric($_POST['poids'])
 
 $content = '';
-if (isset($_POST['formulaire_fruit']) || (is_numeric($_POST['poids'])))
+if (isset($_POST['formulaire_fruit']))
 {
     $content .= '<p>'.  calcul($_POST['fruit'], $_POST['poids']);
 }
@@ -27,17 +27,17 @@ if (isset($_POST['formulaire_fruit']) || (is_numeric($_POST['poids'])))
 
   <div class="form-group">
     <label for="fruit">Fruit</label>
-        <select class="form-control" id="sexe" name="fruit">
-            <option value="cerise"> <?php  ?>Cerises</option>
-            <option value="pomme">  <?php  ?>Pommes</option>
-            <option value="banane"> <?php  ?>Bananes</option>
-            <option value="peche">  <?php  ?>Pêches</option>
+        <select class="form-control" id="fruit" name="fruit">
+            <option value="cerise"> <?php if(isset($_POST['fruit'] && $_POST['fruit']=='cerise')) echo "selected" ?>Cerises</option>
+            <option value="pomme">  <?php if(isset($_POST['fruit'] && $_POST['fruit']=='pomme'))  echo "selected" ?>Pommes</option>
+            <option value="banane"> <?php if(isset($_POST['fruit'] && $_POST['fruit']=='banane')) echo "selected" ?>Bananes</option>
+            <option value="peche">  <?php if(isset($_POST['fruit'] && $_POST['fruit']=='peche'))  echo "selected" ?>Pêches</option>
         </select>
-<!-- Si un Fruit est bien défini, a bien été seléctionné et que ce fruit est égal à bananes, affiche le sélectionné -->
+<!-- Si un Fruit est bien défini, cad a bien été seléctionné et que ce fruit est égal à bananes, affiche le sélectionné -->
 
         <div class="form-group">
             <label for="poids">Poids</label>
-            <input type="text" class="form-control" id="mdp" name="poids" placeholder="poids" value="<?php $_POST['poids']?>">
+            <input type="text" class="form-control" id="mdp" name="poids" placeholder="poids" value="<?php if (isset($_POST['poids'])) echo $_POST['poids']; ?>">
         </div>
   </div>
   <button type="submit" name="formulaire1" value="valid_form" class="btn btn-dark col-md-12">Validation de votre Panier</button>
