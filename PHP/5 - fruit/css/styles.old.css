@@ -1,0 +1,13 @@
+footer{
+    height: 50px;
+    background: #353a40;
+    text-align: center;
+    color: #fff;
+    padding-top: 10px;
+    }
+
+.mon-conteneur{
+    margin-top: 30px;
+    min-height: 500px;
+   
+}    
